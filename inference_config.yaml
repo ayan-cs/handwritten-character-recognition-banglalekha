@@ -1,0 +1,3 @@
+datapath : BanglaLekha_Dataset
+model_name : abc
+batch_size : 16
