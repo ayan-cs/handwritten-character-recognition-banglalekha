@@ -6,11 +6,11 @@ import torchvision.transforms as T
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from torchvision.models import resnet34
-from torch.nn import CrossEntropyLoss
+from torch.nn import CrossEntropyLoss, Linear
 from torch.optim import Adam, lr_scheduler
 
 from utils import generatePlots, getModelName, epoch_time
-from services import DataGenerator, EarlyStopper
+from services import EarlyStopper
 
 def train_epoch(model, criterion, optimizer, train_loader, device):
     model.train()
@@ -41,7 +41,7 @@ def train_epoch(model, criterion, optimizer, train_loader, device):
         gc.collect()
         torch.cuda.empty_cache()
  
-    return correct/total, total_loss/len(dataloader)
+    return correct/total, total_loss/len(train_loader)
 
 def evaluate(model, criterion, val_loader, device):
     model.eval()
@@ -68,7 +68,7 @@ def evaluate(model, criterion, val_loader, device):
             gc.collect()
             torch.cuda.empty_cache()
  
-    return correct/total, epoch_loss/len(dataloader)
+    return correct/total, epoch_loss/len(val_loader)
 
 def train_model(config):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -103,9 +103,13 @@ def train_model(config):
     print(f"Number of batches in Train Loader : {len(train_loader)}\nNumber of batches in Validation loader : {len(val_loader)}")
     output.write(f"Number of batches in Train Loader : {len(train_loader)}\nNumber of batches in Validation loader : {len(val_loader)}\n")
 
+    num_classes = len(os.listdir(os.path.join(datapath, 'train')))
     model = resnet34(pretrained = False)
-    _ = model.to(device)
+    #best_model = resnet34(pretrained = False)
+    model.fc = Linear(512, num_classes, bias=True)
+    #best_model.fc = Linear(512, num_classes)
     best_model = None
+    _ = model.to(device)
 
     criterion = CrossEntropyLoss()
     criterion.to(device)
@@ -138,22 +142,18 @@ def train_model(config):
         epoch_hr, epoch_mins, epoch_secs = epoch_time(start_time, time.time())
 
         print(f"Elapsed time : {epoch_hr}h {epoch_mins}m {epoch_secs}s")
-        print(f"Train F1-score : {train_f1:.4f}\tTrain Loss : {train_loss:.4f}")
-        print(f"Validation F1-score : {val_f1:.4f}\tValidation Loss : {val_loss:.4f}")
-        output.write(f"Elapsed time : {epoch_hr}h {epoch_mins}m {epoch_secs}s\nTrain F1-score : {train_f1:.4f}\tTrain Loss : {train_loss:.4f}\nValidation F1-score : {val_f1:.4f}\tValidation Loss : {val_loss:.4f}\n")
+        print(f"Train Accuracy score : {train_acc:.4f}\tTrain Loss : {train_loss:.4f}")
+        print(f"Validation Accuracy score : {val_acc:.4f}\tValidation Loss : {val_loss:.4f}")
+        output.write(f"Elapsed time : {epoch_hr}h {epoch_mins}m {epoch_secs}s\nTrain Accuracy score : {train_acc:.4f}\tTrain Loss : {train_loss:.4f}\nValidation Accuracy score : {val_acc:.4f}\tValidation Loss : {val_loss:.4f}\n")
 
-        c += 1
-
-        if valid_loss < best_valid_loss :
-            best_valid_loss = valid_loss
+        if val_loss < best_valid_loss :
+            best_valid_loss = val_loss
             best_model = copy.deepcopy(model.state_dict())
-            print(f"Model recorded with Validation loss : {val_loss}\n")
-            output.write(f"Model recorded with Validation loss : {val_loss}\n\n")
-            c = 0
-        
-        if c > 3:
-            scheduler.step()
-            c = 0
+            #best_model.load_state_dict(model.state_dict())
+            print(f"Model recorded with Validation loss : {val_loss:.4f}\n")
+            output.write(f"Model recorded with Validation loss : {val_loss:.4f}\n\n")
+
+        scheduler.step()
         
         if earlystopper.early_stop(val_loss) :
             print(f"Model is not improving. Quitting ...")

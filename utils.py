@@ -3,7 +3,7 @@ import numpy as np
 import os, time
 from datetime import datetime
 
-from services import DataGenerator, EarlyStopper
+from services import EarlyStopper
 
 def epoch_time(start_time, end_time):
     elapsed_time = end_time - start_time
@@ -29,8 +29,8 @@ def generatePlots(train_list, val_list, fig_path, plot_type = 'loss'):
             print("List empty")
         else:
             min_val_loss = min(val_list)
-            epoch_loss = val_loss_list.index(min_val_loss)
-            print(f"Optimal point : {epoch} epoch with Val loss {min_val_loss}")
+            epoch_loss = val_list.index(min_val_loss)
+            print(f"Optimal point : {epoch_loss} epoch with Val loss {min_val_loss}")
             plt.figure()
             plt.plot(range(len(train_list)), train_list, color='blue', label='Train Loss', linestyle='dashed')
             plt.plot(range(len(val_list)), val_list, color='green', label='Valid loss', linestyle='dashed')
@@ -46,7 +46,7 @@ def generatePlots(train_list, val_list, fig_path, plot_type = 'loss'):
         else:
             max_val_acc = max(val_list)
             epoch_acc = val_list.index(max_val_acc)
-            print(f"Optimal point : {epoch} epoch with Val Accuracy {max_val_acc}")
+            print(f"Optimal point : {epoch_acc} epoch with Val Accuracy {max_val_acc}")
             plt.figure()
             plt.plot(range(len(train_list)), train_list, color='blue', label='Train Accuracy')
             plt.plot(range(len(val_list)), val_list, color='green', label='Valid Accuracy')

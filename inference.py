@@ -6,17 +6,15 @@ from torchvision.datasets import ImageFolder
 from torchvision import transforms
 from pathlib import Path
 
-from services import DataGenerator
-
 def run_inference(config, output):
     parent = str(Path(__file__)).rsplit('\\', maxsplit=1)[0]
 
-    dataset_path = os.path.join(parent, config.datapath)
-    num_classes = len(os.listdir(os.path.join(parent, dataset_path, 'test')))
+    datapath = os.path.join(parent, config.datapath)
+    num_classes = len(os.listdir(os.path.join(parent, datapath, 'test')))
 
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model = resnet34()
-    model.fc = nn.Linear(2048, num_classes, bias=True)
+    model = resnet34(pretrained = False)
+    model.fc = nn.Linear(512, num_classes, bias=True)
     model.load_state_dict(torch.load(os.path.join(parent, 'Checkpoints', f"{config.model_name}.pth")))
     _ = model.to(device)
 
@@ -25,7 +23,8 @@ def run_inference(config, output):
         transforms.Normalize((0.5,), (0.5,)),
     ])
 
-    test_dl = DataLoader(DataGenerator(os.path.join(parent, dataset_path, 'test')), batch_size = config.batch_size)
+    test_folder = ImageFolder(os.path.join(datapath, 'test'), transform = transform)
+    test_dl = DataLoader(test_folder, batch_size = config.batch_size)
 
     total = 0
     correct1 = 0

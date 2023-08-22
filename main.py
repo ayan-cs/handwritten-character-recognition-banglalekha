@@ -1,7 +1,7 @@
 import os, sys, mlconfig, shutil
 from pathlib import Path
 from train_model import train_model
-#from inference import run_inference
+from inference import run_inference
 
 # Sample argument : python main.py train
 num_args = len(sys.argv)
