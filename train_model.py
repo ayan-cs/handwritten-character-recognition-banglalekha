@@ -105,17 +105,14 @@ def train_model(config):
 
     num_classes = len(os.listdir(os.path.join(datapath, 'train')))
     model = resnet34(pretrained = False)
-    #best_model = resnet34(pretrained = False)
     model.fc = Linear(512, num_classes, bias=True)
-    #best_model.fc = Linear(512, num_classes)
-    best_model = None
     _ = model.to(device)
 
     criterion = CrossEntropyLoss()
     criterion.to(device)
 
     optimizer = Adam(model.parameters(), lr = config.learning_rate, weight_decay = 0.0004)
-    scheduler = lr_scheduler.StepLR(optimizer, step_size = 5, gamma = 0.1)
+    scheduler = lr_scheduler.StepLR(optimizer, step_size = 1, gamma = 0.1)
     earlystopper = EarlyStopper(patience = config.patience)
 
     c = 0
@@ -148,12 +145,16 @@ def train_model(config):
 
         if val_loss < best_valid_loss :
             best_valid_loss = val_loss
-            best_model = copy.deepcopy(model.state_dict())
-            #best_model.load_state_dict(model.state_dict())
+            torch.save(model.state_dict(), os.path.join(parent, 'Checkpoints', f"{model_name}.pth"))
             print(f"Model recorded with Validation loss : {val_loss:.4f}\n")
             output.write(f"Model recorded with Validation loss : {val_loss:.4f}\n\n")
+            c = 0
+        else:
+            c += 1
 
-        scheduler.step()
+        if c==5:
+            scheduler.step()
+            c = 0
         
         if earlystopper.early_stop(val_loss) :
             print(f"Model is not improving. Quitting ...")
@@ -166,9 +167,6 @@ def train_model(config):
     print(f"Total training time : {train_h}hrs. {train_m}mins. {train_s}s")
     output.write(f"Total training time : {train_h}hrs. {train_m}mins. {train_s}s\n")
     print(f"For inference, put the model name in 'inference_config.yaml' file\n-> model_name : {model_name}\n")
-
-    model.load_state_dict(best_model)
-    torch.save(model.state_dict(), os.path.join(parent, 'Checkpoints', f"{model_name}.pth"))
 
     if device == 'cuda':
         train_acc_list = [i.to('cpu') for i in train_acc_list]
