@@ -159,6 +159,7 @@ def train_model(config):
         if earlystopper.early_stop(val_loss) :
             print(f"Model is not improving. Quitting ...")
             output.write(f"Model is not improving. Quitting ...\n")
+            break
         
         torch.cuda.empty_cache()
 

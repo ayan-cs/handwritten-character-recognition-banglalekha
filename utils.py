@@ -58,20 +58,3 @@ def generatePlots(train_list, val_list, fig_path, plot_type = 'loss'):
             plt.savefig(fig_path)
     else :
         print("Invalid plot type")
-
-"""def createSplit(datapath, train_size):
-    all_imgs = dict()
-    for label in os.listdir(datapath):
-        images = os.listdir(os.path.join(datapath, label))
-        for img in images :
-            all_imgs[img] = label
-    
-    train = dict()
-    val = dict()
-    train_size = int(len(all_imgs)*train_size)
-    for img in all_imgs.keys()[:train_size]:
-        train[img] = all_imgs[img]
-    for img in all_imgs.keys()[train_size:]:
-        val[img] = all_imgs[img]
-    
-    return train, val"""

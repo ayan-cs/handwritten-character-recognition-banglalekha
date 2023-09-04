@@ -17,6 +17,7 @@ def run_inference(config, output):
     model.fc = nn.Linear(512, num_classes, bias=True)
     model.load_state_dict(torch.load(os.path.join(parent, 'Checkpoints', f"{config.model_name}.pth")))
     _ = model.to(device)
+    model.eval()
 
     transform = transforms.Compose([
         transforms.ToTensor(),
