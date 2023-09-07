@@ -1,10 +1,12 @@
-import torch, os
+import torch, os, time
 from torchvision.models import resnet34
 import torch.nn as nn
 from torch.utils.data.dataloader import DataLoader
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
 from pathlib import Path
+
+from utils import epoch_time
 
 def run_inference(config, output):
     parent = str(Path(__file__)).rsplit('\\', maxsplit=1)[0]
@@ -29,12 +31,18 @@ def run_inference(config, output):
 
     total = 0
     correct1 = 0
+    start = time.time()
     with torch.no_grad():
         for (img, label) in test_dl:
             img, label = img.to(device), label.to(device)
-            output = model(img)
-            _, predicted = torch.max(output.data, 1)
+            predicted = model(img)
+            _, predicted = torch.max(predicted.data, 1)
             total += label.size(0)
             correct1 += (predicted == label).sum().item()
             #correct2 += torch.sum(predicted == label.data)
-    print(f"Accuracy on Validation set : {correct1/total}")
+    print(f"Accuracy on Validation set : {correct1/total:.6f}")
+    output.write(f"Accuracy on Validation set : {correct1/total:.6f}\n")
+    end = time.time()
+    h, m, s = epoch_time(start, end)
+    print(f"Inference time : {h}hrs. {m}mins. {s}s")
+    output.write(f"Inference time : {h}hrs. {m}mins. {s}s\n")

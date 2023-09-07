@@ -1,0 +1,2 @@
+Accuracy on Validation set : 0.944793
+Inference time : 0hrs. 0mins. 25s
