@@ -1,0 +1,229 @@
+Device Type : cuda
+Number of batches in Train Loader : 2534
+Number of batches in Validation loader : 63
+
+Epoch: 01	learning rate : [0.001]
+
+Elapsed time : 0h 15m 14s
+Train Accuracy score : 0.7825	Train Loss : 50.5208
+Validation Accuracy score : 0.7985	Validation Loss : 43.6161
+Model recorded with Validation loss : 43.6161
+
+
+Epoch: 02	learning rate : [0.001]
+
+Elapsed time : 0h 15m 27s
+Train Accuracy score : 0.8896	Train Loss : 26.1241
+Validation Accuracy score : 0.8876	Validation Loss : 25.3016
+Model recorded with Validation loss : 25.3016
+
+
+Epoch: 03	learning rate : [0.001]
+
+Elapsed time : 0h 25m 16s
+Train Accuracy score : 0.9063	Train Loss : 22.2537
+Validation Accuracy score : 0.8883	Validation Loss : 24.8338
+Model recorded with Validation loss : 24.8338
+
+
+Epoch: 04	learning rate : [0.001]
+
+Elapsed time : 0h 15m 9s
+Train Accuracy score : 0.9135	Train Loss : 20.6588
+Validation Accuracy score : 0.9026	Validation Loss : 22.1932
+Model recorded with Validation loss : 22.1932
+
+
+Epoch: 05	learning rate : [0.001]
+
+Elapsed time : 0h 14m 56s
+Train Accuracy score : 0.9172	Train Loss : 19.6124
+Validation Accuracy score : 0.8928	Validation Loss : 24.5683
+
+Epoch: 06	learning rate : [0.001]
+
+Elapsed time : 0h 14m 51s
+Train Accuracy score : 0.9212	Train Loss : 18.8528
+Validation Accuracy score : 0.9019	Validation Loss : 21.6404
+Model recorded with Validation loss : 21.6404
+
+
+Epoch: 07	learning rate : [0.001]
+
+Elapsed time : 0h 14m 54s
+Train Accuracy score : 0.9240	Train Loss : 18.2388
+Validation Accuracy score : 0.9064	Validation Loss : 20.7082
+Model recorded with Validation loss : 20.7082
+
+
+Epoch: 08	learning rate : [0.001]
+
+Elapsed time : 0h 14m 48s
+Train Accuracy score : 0.9256	Train Loss : 17.7328
+Validation Accuracy score : 0.9102	Validation Loss : 19.6644
+Model recorded with Validation loss : 19.6644
+
+
+Epoch: 09	learning rate : [0.001]
+
+Elapsed time : 0h 14m 41s
+Train Accuracy score : 0.9266	Train Loss : 17.5044
+Validation Accuracy score : 0.9109	Validation Loss : 19.7500
+
+Epoch: 10	learning rate : [0.001]
+
+Elapsed time : 0h 14m 44s
+Train Accuracy score : 0.9278	Train Loss : 17.1621
+Validation Accuracy score : 0.9157	Validation Loss : 19.1318
+Model recorded with Validation loss : 19.1318
+
+
+Epoch: 11	learning rate : [0.001]
+
+Elapsed time : 0h 14m 54s
+Train Accuracy score : 0.9286	Train Loss : 17.0783
+Validation Accuracy score : 0.9199	Validation Loss : 17.9039
+Model recorded with Validation loss : 17.9039
+
+
+Epoch: 12	learning rate : [0.001]
+
+Elapsed time : 0h 14m 46s
+Train Accuracy score : 0.9292	Train Loss : 16.7863
+Validation Accuracy score : 0.9157	Validation Loss : 19.3426
+
+Epoch: 13	learning rate : [0.001]
+
+Elapsed time : 0h 14m 45s
+Train Accuracy score : 0.9299	Train Loss : 16.6391
+Validation Accuracy score : 0.9162	Validation Loss : 18.2700
+
+Epoch: 14	learning rate : [0.001]
+
+Elapsed time : 0h 14m 46s
+Train Accuracy score : 0.9313	Train Loss : 16.4052
+Validation Accuracy score : 0.9235	Validation Loss : 17.6233
+Model recorded with Validation loss : 17.6233
+
+
+Epoch: 15	learning rate : [0.001]
+
+Elapsed time : 0h 14m 44s
+Train Accuracy score : 0.9312	Train Loss : 16.3711
+Validation Accuracy score : 0.9245	Validation Loss : 17.1385
+Model recorded with Validation loss : 17.1385
+
+
+Epoch: 16	learning rate : [0.001]
+
+Elapsed time : 0h 14m 53s
+Train Accuracy score : 0.9321	Train Loss : 16.1416
+Validation Accuracy score : 0.9225	Validation Loss : 18.4962
+
+Epoch: 17	learning rate : [0.001]
+
+Elapsed time : 0h 14m 49s
+Train Accuracy score : 0.9318	Train Loss : 16.1248
+Validation Accuracy score : 0.9177	Validation Loss : 17.7962
+
+Epoch: 18	learning rate : [0.001]
+
+Elapsed time : 0h 14m 55s
+Train Accuracy score : 0.9325	Train Loss : 16.0144
+Validation Accuracy score : 0.9225	Validation Loss : 18.7215
+
+Epoch: 19	learning rate : [0.001]
+
+Elapsed time : 0h 14m 54s
+Train Accuracy score : 0.9333	Train Loss : 15.8454
+Validation Accuracy score : 0.9225	Validation Loss : 16.8375
+Model recorded with Validation loss : 16.8375
+
+
+Epoch: 20	learning rate : [0.001]
+
+Elapsed time : 0h 15m 37s
+Train Accuracy score : 0.9331	Train Loss : 15.8660
+Validation Accuracy score : 0.9285	Validation Loss : 17.0646
+
+Epoch: 21	learning rate : [0.001]
+
+Elapsed time : 0h 15m 13s
+Train Accuracy score : 0.9333	Train Loss : 15.8279
+Validation Accuracy score : 0.9245	Validation Loss : 17.0429
+
+Epoch: 22	learning rate : [0.001]
+
+Elapsed time : 0h 14m 59s
+Train Accuracy score : 0.9337	Train Loss : 15.7520
+Validation Accuracy score : 0.9162	Validation Loss : 19.1247
+
+Epoch: 23	learning rate : [0.001]
+
+Elapsed time : 0h 14m 54s
+Train Accuracy score : 0.9337	Train Loss : 15.6850
+Validation Accuracy score : 0.9212	Validation Loss : 18.1460
+
+Epoch: 24	learning rate : [0.001]
+
+Elapsed time : 0h 20m 49s
+Train Accuracy score : 0.9334	Train Loss : 15.6888
+Validation Accuracy score : 0.9232	Validation Loss : 17.7426
+
+Epoch: 25	learning rate : [0.0001]
+
+Elapsed time : 0h 19m 37s
+Train Accuracy score : 0.9544	Train Loss : 10.8651
+Validation Accuracy score : 0.9448	Validation Loss : 12.0347
+Model recorded with Validation loss : 12.0347
+
+
+Epoch: 26	learning rate : [0.0001]
+
+Elapsed time : 0h 14m 54s
+Train Accuracy score : 0.9598	Train Loss : 9.5702
+Validation Accuracy score : 0.9491	Validation Loss : 12.0533
+
+Epoch: 27	learning rate : [0.0001]
+
+Elapsed time : 15h 30m 14s
+Train Accuracy score : 0.9630	Train Loss : 8.9372
+Validation Accuracy score : 0.9450	Validation Loss : 12.6758
+
+Epoch: 28	learning rate : [0.0001]
+
+Elapsed time : 0h 26m 14s
+Train Accuracy score : 0.9656	Train Loss : 8.3923
+Validation Accuracy score : 0.9468	Validation Loss : 12.5122
+
+Epoch: 29	learning rate : [0.0001]
+
+Elapsed time : 0h 15m 14s
+Train Accuracy score : 0.9676	Train Loss : 7.9388
+Validation Accuracy score : 0.9463	Validation Loss : 12.8985
+
+Epoch: 30	learning rate : [0.0001]
+
+Elapsed time : 0h 15m 8s
+Train Accuracy score : 0.9695	Train Loss : 7.5187
+Validation Accuracy score : 0.9443	Validation Loss : 13.2992
+
+Epoch: 31	learning rate : [1e-05]
+
+Elapsed time : 0h 15m 2s
+Train Accuracy score : 0.9750	Train Loss : 6.3761
+Validation Accuracy score : 0.9473	Validation Loss : 12.9372
+
+Epoch: 32	learning rate : [1e-05]
+
+Elapsed time : 0h 15m 4s
+Train Accuracy score : 0.9760	Train Loss : 6.1655
+Validation Accuracy score : 0.9468	Validation Loss : 12.9212
+
+Epoch: 33	learning rate : [1e-05]
+
+Elapsed time : 0h 15m 3s
+Train Accuracy score : 0.9768	Train Loss : 6.0360
+Validation Accuracy score : 0.9450	Validation Loss : 13.0051
+Model is not improving. Quitting ...
+Total training time : 24hrs. 1mins. 43s
